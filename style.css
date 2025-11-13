@@ -1,60 +1,78 @@
-/* --- 網站封面區塊 (Header) - 使用國旗配色和抽象設計 --- */
-.korean-header {
-    /* 國旗核心：白色背景 */
-    background-color: #ffffff; 
-    
-    color: #333; /* 文字改為深色，因為背景主色是白色 */
-    padding: 100px 20px; 
-    text-align: center;
-    position: relative; 
-    overflow: hidden; 
-    min-height: 60vh; 
-    display: flex; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    /* 增加國旗邊框的顏色 */
-    border-bottom: 8px solid #cc0000; /* 紅色分隔線 */
-    border-top: 8px solid #1a478b; /* 藍色頂部分隔線 */
+/* 韓國文化主題色 (Obangsaek) 裝飾區塊 */
+
+/* 基礎入門區 - 淺青色主題 (1) */
+.unit-korean-blue {
+    background-color: #e3f2fd; 
+}
+.unit-korean-blue h2 {
+    color: #1565c0; 
+    border-color: #1565c0;
+}
+/* ... 基礎入門區的人物裝飾 (unit-korean-blue::before) 保持不變 ... */
+
+/* 基礎單字區 - 新的淺黃色主題 (2) */
+.unit-korean-yellow-new {
+    background-color: #fffde7; 
+}
+.unit-korean-yellow-new h2 {
+    color: #fbc02d; 
+    border-color: #fbc02d;
 }
 
-/* 移除原有的半透明覆蓋層，因為白色背景不需要 */
-.korean-header::before {
-    content: '';
-    position: absolute;
-    /* 模擬太極的紅色漸變 */
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 75% 50%, rgba(204, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0) 50%),
-                radial-gradient(circle at 25% 50%, rgba(26, 71, 139, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
-    z-index: 1; 
+/* 核心文法區 - 淺紅色主題 (3) */
+.unit-korean-red {
+    background-color: #ffebee; 
 }
-
-
-/* 確保標題和段落在裝飾之上 */
-.korean-header h1, .korean-header p {
-    position: relative;
-    z-index: 2; 
-    /* 由於背景是白色，移除陰影，改為深色文字 */
-    text-shadow: none; 
+.unit-korean-red h2 {
+    color: #d32f2f; 
+    border-color: #d32f2f;
 }
+/* ... 核心文法區的人物裝飾 (unit-korean-red::after) 保持不變 ... */
 
-.korean-header h1 {
-    font-size: 3.8em; 
+/* 影片區 - 淺綠色/傳統青色主題 (4) */
+/* 為了讓新單字區使用黃色，這裡將影片區顏色換成淺綠，以區隔視覺 */
+.unit-korean-yellow { 
+    background-color: #e8f5e9; /* 淺綠色 */
+}
+.unit-korean-yellow h2 {
+    color: #388e3c; /* 深綠色 */
+    border-color: #388e3c;
+}
+/* ... 影片區塊的韓國傳統圖案裝飾 (unit-korean-yellow::before) 保持不變 ... */
+
+
+/* --- 新增：單字列表樣式 --- */
+.word-list-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+.word-group {
+    flex: 1;
+    min-width: 300px;
+}
+.word-group h3 {
+    font-size: 1.4em;
+    color: #0077b6; /* 藍色標題 */
+    border-bottom: 2px solid #a8dadc;
+    padding-bottom: 10px;
     margin-bottom: 15px;
-    letter-spacing: 2px; 
-    color: #cc0000; /* 標題使用紅色，更具衝擊力 */
 }
-.korean-header p {
-    font-size: 1.5em; 
-    font-weight: 400;
-    max-width: 800px; 
-    color: #1a478b; /* 簡介使用藍色 */
+.word-group ul {
+    list-style: none;
+    padding: 0;
 }
-
-/* --- 移除Header原有的國旗裝飾，以免與新的設計衝突 --- */
-.korean-header::after {
-    /* 清除 ::after 的內容，使其失效 */
-    content: none; 
+.word-group li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+.word-group li strong {
+    color: #d62828; /* 紅色強調 */
+    font-weight: bold;
 }
