@@ -1,0 +1,93 @@
+/* 讓頁面佔滿瀏覽器並允許滾動 */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+    background-color: #f7f3e8; /* 韓屋/傳統紙張背景色 */
+    color: #333; 
+    font-size: 18px; /* 基礎字體放大 */
+    line-height: 1.6;
+}
+
+/* 確保所有 p5.js 畫布被正確定位 */
+canvas {
+    display: block; 
+    margin: 30px auto; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+    border-radius: 12px;
+}
+
+/* 網站標題區域 (Header) */
+.korean-header {
+    background-color: #1a478b; /* 深藍 (青) */
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 8px solid #cc0000; /* 紅色分隔線 (紅) */
+}
+.korean-header h1 {
+    font-size: 3em; 
+    margin-bottom: 10px;
+}
+.korean-header p {
+    font-size: 1.2em;
+}
+
+/* 學習單元區塊的通用樣式 */
+.learning-unit {
+    padding: 80px 5% 100px 5%; 
+    min-height: 85vh; 
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.learning-unit h2 {
+    font-size: 2.5em; 
+    border-bottom: 4px solid;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+.learning-unit p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+/* 韓國文化主題色 (Obangsaek) 裝飾區塊 */
+
+/* 基礎入門區 - 淺青色主題 */
+.unit-korean-blue {
+    background-color: #e3f2fd; 
+}
+.unit-korean-blue h2 {
+    color: #1565c0; 
+    border-color: #1565c0;
+}
+
+/* 核心文法區 - 淺紅色主題 */
+.unit-korean-red {
+    background-color: #ffebee; 
+}
+.unit-korean-red h2 {
+    color: #d32f2f; 
+    border-color: #d32f2f;
+}
+
+/* 影片區 - 淺黃色主題 */
+.unit-korean-yellow {
+    background-color: #fffde7; 
+}
+.unit-korean-yellow h2 {
+    color: #fbc02d; 
+    border-color: #fbc02d;
+}
+
+/* 影片嵌入容器樣式 */
+.video-container {
+    text-align: center;
+    margin-top: 50px;
+}
+.video-container iframe {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <title>韓文文化學習站</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <header class="korean-header">
+        <h1>🇰🇷 韓文文化互動學習之旅 📚</h1>
+        <p>跟著我們一起探索韓文字母、詞彙與韓國文化！</p>
+    </header>
+
+    <section id="hangeul-section" class="learning-unit unit-korean-blue">
+        <h2>1. 韓文基礎入門 (Hangeul Village)</h2>
+        <p>點擊下方的畫布，練習韓文字母發音。</p>
+        <div id="hangeul-canvas-container"></div>
+    </section>
+
+    <section id="grammar-section" class="learning-unit unit-korean-red">
+        <h2>2. 核心文法與詞彙 (Grammar Garden) - 配對遊戲</h2>
+        <p>點擊文字和圖片來配對詞彙。配對成功後，卡片會消失！</p>
+        <div id="matching-canvas-container"></div>
+    </section>
+
+    <section id="video-section" class="learning-unit unit-korean-yellow">
+        <h2>3. 影片學習區 (K-Content Corner)</h2>
+        <p>透過韓國影片學習生活對話與文化情境。</p>
+        <div class="video-container">
+            <iframe 
+                width="800" 
+                height="450" 
+                src="https://www.youtube.com/embed/0J2YqD9sdXQ?si=SEQxUu5Rbwq51rsA" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+
+    <script src="sketch.js"></script>
+</body>
+</html>
