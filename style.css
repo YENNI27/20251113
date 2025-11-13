@@ -1,60 +1,73 @@
-/* --- 網站封面區塊 (Header) - 使用國旗配色和抽象設計 --- */
-.korean-header {
-    /* 國旗核心：白色背景 */
-    background-color: #ffffff; 
-    
-    color: #333; /* 文字改為深色，因為背景主色是白色 */
-    padding: 100px 20px; 
-    text-align: center;
-    position: relative; 
-    overflow: hidden; 
-    min-height: 60vh; 
-    display: flex; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    /* 增加國旗邊框的顏色 */
-    border-bottom: 8px solid #cc0000; /* 紅色分隔線 */
-    border-top: 8px solid #1a478b; /* 藍色頂部分隔線 */
-}
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <title>韓文文化學習站</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
 
-/* 移除原有的半透明覆蓋層，因為白色背景不需要 */
-.korean-header::before {
-    content: '';
-    position: absolute;
-    /* 模擬太極的紅色漸變 */
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 75% 50%, rgba(204, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0) 50%),
-                radial-gradient(circle at 25% 50%, rgba(26, 71, 139, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
-    z-index: 1; 
-}
+    <header class="korean-header">
+        <h1>🇰🇷 韓文文化互動學習之旅 📚</h1>
+        <p>跟著我們一起探索韓文字母、詞彙與韓國文化！</p>
+    </header>
 
+    <section id="hangeul-section" class="learning-unit unit-korean-blue">
+        <h2>1. 韓文基礎入門 (Hangeul Village)</h2>
+        <p>點擊下方的畫布，練習韓文字母發音。</p>
+        <div id="hangeul-canvas-container"></div>
+    </section>
 
-/* 確保標題和段落在裝飾之上 */
-.korean-header h1, .korean-header p {
-    position: relative;
-    z-index: 2; 
-    /* 由於背景是白色，移除陰影，改為深色文字 */
-    text-shadow: none; 
-}
+    <section id="vocab-section" class="learning-unit unit-korean-yellow-new">
+        <h2>2. 基礎單字與問候語 (Word Foundation)</h2>
+        <p>學習最基本的問候語和核心詞彙！</p>
+        
+        <div class="word-list-container">
+            <div class="word-group">
+                <h3>常用問候語</h3>
+                <ul>
+                    <li>**안녕하세요** (An-nyeong-ha-se-yo) - 您好 / 請問好 (最常用敬語)</li>
+                    <li>**감사합니다** (Gam-sa-ham-ni-da) - 謝謝 (敬語)</li>
+                    <li>**네 / 아니요** (Ne / A-ni-yo) - 是 / 不是</li>
+                    <li>**죄송합니다** (Joe-song-ham-ni-da) - 對不起</li>
+                </ul>
+            </div>
+            
+            <div class="word-group">
+                <h3>核心基礎詞彙</h3>
+                <ul>
+                    <li>**나라** (Na-ra) - 國家</li>
+                    <li>**사랑** (Sa-rang) - 愛</li>
+                    <li>**친구** (Chin-gu) - 朋友</li>
+                    <li>**가족** (Ga-jok) - 家人</li>
+                </ul>
+            </div>
+        </div>
+        
+    </section>
 
-.korean-header h1 {
-    font-size: 3.8em; 
-    margin-bottom: 15px;
-    letter-spacing: 2px; 
-    color: #cc0000; /* 標題使用紅色，更具衝擊力 */
-}
-.korean-header p {
-    font-size: 1.5em; 
-    font-weight: 400;
-    max-width: 800px; 
-    color: #1a478b; /* 簡介使用藍色 */
-}
+    <section id="grammar-section" class="learning-unit unit-korean-red">
+        <h2>3. 詞彙配對遊戲 (Grammar Garden)</h2>
+        <p>點擊文字和圖片來配對詞彙！</p>
+        <div id="matching-canvas-container"></div>
+    </section>
 
-/* --- 移除Header原有的國旗裝飾，以免與新的設計衝突 --- */
-.korean-header::after {
-    /* 清除 ::after 的內容，使其失效 */
-    content: none; 
-}
+    <section id="video-section" class="learning-unit unit-korean-yellow">
+        <h2>4. 影片學習區 (K-Content Corner)</h2>
+        <p>透過韓國影片學習生活對話與文化情境。</p>
+        <div class="video-container">
+            <iframe 
+                width="800" 
+                height="450" 
+                src="YOUR_YOUTUBE_EMBED_LINK" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+
+    <script src="sketch.js"></script>
+</body>
+</html>
