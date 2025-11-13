@@ -5,7 +5,7 @@ html, body {
     font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
     background-color: #f7f3e8; /* 韓屋/傳統紙張背景色 */
     color: #333; 
-    font-size: 18px; /* 基礎字體放大 */
+    font-size: 18px; 
     line-height: 1.6;
 }
 
@@ -17,21 +17,76 @@ canvas {
     border-radius: 12px;
 }
 
-/* 網站標題區域 (Header) */
+/* --- 網站封面區塊 (Header) - 大幅修改 --- */
 .korean-header {
-    background-color: #1a478b; /* 深藍 (青) */
-    color: #fff;
-    padding: 60px 20px;
+    /* 使用背景圖片作為封面 */
+    background-image: url('korean_cover_bg.jpg'); /* *** 請替換為您的封面背景圖片路徑 *** */
+    background-size: cover; /* 覆蓋整個區域 */
+    background-position: center; /* 圖片置中 */
+    background-repeat: no-repeat; /* 不重複 */
+    
+    color: #fff; /* 文字顏色預設為白色 */
+    padding: 100px 20px; /* 增加上下內距，讓封面更高 */
     text-align: center;
-    border-bottom: 8px solid #cc0000; /* 紅色分隔線 (紅) */
+    position: relative; 
+    overflow: hidden; 
+    min-height: 60vh; /* 確保封面至少佔螢幕高度的 60% */
+    display: flex; /* 讓內容垂直置中 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+/* 在背景圖片上疊加一層半透明的深色覆蓋層，提高文字可讀性 */
+.korean-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* 半透明的深色 */
+    z-index: 1; /* 確保在背景圖之上，文字之下 */
+}
+
+/* 確保標題和段落在覆蓋層之上 */
+.korean-header h1, .korean-header p {
+    position: relative;
+    z-index: 2; /* 確保在覆蓋層之上 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 文字陰影，提高可讀性 */
+}
+
 .korean-header h1 {
-    font-size: 3em; 
-    margin-bottom: 10px;
+    font-size: 3.8em; /* 封面標題更大 */
+    margin-bottom: 15px;
+    letter-spacing: 2px; /* 增加字距 */
 }
 .korean-header p {
-    font-size: 1.2em;
+    font-size: 1.5em; /* 封面簡介更大 */
+    font-weight: 400;
+    max-width: 800px; /* 限制簡介寬度 */
 }
+
+
+/* --- 移除Header原有的國旗裝飾，因為新的封面風格可能不適合直接疊加 --- */
+/* 如果您仍然想保留國旗裝飾，請自行將這段註釋取消，並調整位置和不透明度 */
+/*
+.korean-header::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 80px; 
+    height: 80px; 
+    background-image: url('korean_flag.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    transform: scaleX(-1); 
+    z-index: 2;
+}
+*/
+
 
 /* 學習單元區塊的通用樣式 */
 .learning-unit {
@@ -40,6 +95,8 @@ canvas {
     width: 90%;
     margin: 0 auto;
     box-sizing: border-box;
+    position: relative; 
+    overflow: hidden; 
 }
 .learning-unit h2 {
     font-size: 2.5em; 
@@ -62,6 +119,21 @@ canvas {
     color: #1565c0; 
     border-color: #1565c0;
 }
+/* 基礎入門區的人物裝飾 - 保留 */
+.unit-korean-blue::before {
+    content: '';
+    position: absolute;
+    bottom: -20px; 
+    left: -30px; 
+    width: 180px; 
+    height: 250px; 
+    background-image: url('korean_figure1.jpg'); /* 確保這裡副檔名正確 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6; 
+    z-index: 0; 
+}
+
 
 /* 核心文法區 - 淺紅色主題 */
 .unit-korean-red {
@@ -71,6 +143,22 @@ canvas {
     color: #d32f2f; 
     border-color: #d32f2f;
 }
+/* 核心文法區的人物裝飾 - 保留 */
+.unit-korean-red::after {
+    content: '';
+    position: absolute;
+    top: -50px; 
+    right: -50px; 
+    width: 200px; 
+    height: 280px; 
+    background-image: url('korean_figure1.jpg'); /* 確保這裡副檔名正確 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5; 
+    z-index: 0;
+    transform: rotate(15deg); 
+}
+
 
 /* 影片區 - 淺黃色主題 */
 .unit-korean-yellow {
@@ -80,11 +168,28 @@ canvas {
     color: #fbc02d; 
     border-color: #fbc02d;
 }
+/* 影片區塊的韓國傳統圖案裝飾 - 保留 */
+.unit-korean-yellow::before {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    background-image: url('korean_pattern.jpg'); /* 確保這裡副檔名正確 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: 0;
+}
+
 
 /* 影片嵌入容器樣式 */
 .video-container {
     text-align: center;
     margin-top: 50px;
+    position: relative; 
+    z-index: 1; 
 }
 .video-container iframe {
     max-width: 100%;
