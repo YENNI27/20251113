@@ -3,7 +3,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
-    background-color: #f7f3e8; 
+    background-color: #f7f3e8; /* 韓屋/傳統紙張背景色 */
     color: #333; 
     font-size: 18px; 
     line-height: 1.6;
@@ -17,27 +17,27 @@ canvas {
     border-radius: 12px;
 }
 
-/* --- 網站封面區塊 (Header) - 韓國國旗配色封面 --- */
+/* --- 網站封面區塊 (Header) - 大幅修改 --- */
 .korean-header {
-    /* 國旗核心：白色背景 */
-    background-color: #ffffff; 
-    color: #333; 
-    padding: 100px 20px; 
+    /* 使用背景圖片作為封面 */
+    background-image: url('korean_cover_bg.jpg'); /* *** 請替換為您的封面背景圖片路徑 *** */
+    background-size: cover; /* 覆蓋整個區域 */
+    background-position: center; /* 圖片置中 */
+    background-repeat: no-repeat; /* 不重複 */
+    
+    color: #fff; /* 文字顏色預設為白色 */
+    padding: 100px 20px; /* 增加上下內距，讓封面更高 */
     text-align: center;
     position: relative; 
     overflow: hidden; 
-    min-height: 60vh; /* 封面高度 */
-    display: flex; 
+    min-height: 60vh; /* 確保封面至少佔螢幕高度的 60% */
+    display: flex; /* 讓內容垂直置中 */
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    /* 國旗邊框顏色 */
-    border-bottom: 8px solid #cc0000; 
-    border-top: 8px solid #1a478b; 
 }
 
-/* 抽象太極漸變裝飾 (不會影響文字清晰度) */
+/* 在背景圖片上疊加一層半透明的深色覆蓋層，提高文字可讀性 */
 .korean-header::before {
     content: '';
     position: absolute;
@@ -45,32 +45,47 @@ canvas {
     left: 0;
     width: 100%;
     height: 100%;
-    /* 模擬太極的紅色和藍色光暈 */
-    background: radial-gradient(circle at 75% 50%, rgba(204, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0) 50%),
-                radial-gradient(circle at 25% 50%, rgba(26, 71, 139, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
-    z-index: 1; 
+    background-color: rgba(0, 0, 0, 0.4); /* 半透明的深色 */
+    z-index: 1; /* 確保在背景圖之上，文字之下 */
 }
 
-/* 確保標題和段落層級 */
+/* 確保標題和段落在覆蓋層之上 */
 .korean-header h1, .korean-header p {
     position: relative;
-    z-index: 2; 
-    text-shadow: none; 
+    z-index: 2; /* 確保在覆蓋層之上 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 文字陰影，提高可讀性 */
 }
 
 .korean-header h1 {
-    font-size: 3.8em; 
+    font-size: 3.8em; /* 封面標題更大 */
     margin-bottom: 15px;
-    letter-spacing: 2px; 
-    color: #cc0000; 
+    letter-spacing: 2px; /* 增加字距 */
 }
 .korean-header p {
-    font-size: 1.5em; 
+    font-size: 1.5em; /* 封面簡介更大 */
     font-weight: 400;
-    max-width: 800px; 
-    color: #1a478b; 
+    max-width: 800px; /* 限制簡介寬度 */
 }
-.korean-header::after { content: none; } /* 移除原來的 after 元素 */
+
+
+/* --- 移除Header原有的國旗裝飾，因為新的封面風格可能不適合直接疊加 --- */
+/* 如果您仍然想保留國旗裝飾，請自行將這段註釋取消，並調整位置和不透明度 */
+/*
+.korean-header::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 80px; 
+    height: 80px; 
+    background-image: url('korean_flag.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    transform: scaleX(-1); 
+    z-index: 2;
+}
+*/
 
 
 /* 學習單元區塊的通用樣式 */
@@ -94,10 +109,9 @@ canvas {
     margin-bottom: 20px;
 }
 
+/* 韓國文化主題色 (Obangsaek) 裝飾區塊 */
 
-/* --- 韓國文化主題色 (Obangsaek) 裝飾區塊 (四頁主題色) --- */
-
-/* 1. 基礎入門區 - 淺青色主題 */
+/* 基礎入門區 - 淺青色主題 */
 .unit-korean-blue {
     background-color: #e3f2fd; 
 }
@@ -105,27 +119,23 @@ canvas {
     color: #1565c0; 
     border-color: #1565c0;
 }
+/* 基礎入門區的人物裝飾 - 保留 */
 .unit-korean-blue::before {
-    /* 裝飾圖片路徑，請確保檔案存在且副檔名正確 */
     content: '';
-    position: absolute; bottom: -20px; left: -30px; 
-    width: 180px; height: 250px; 
-    background-image: url('korean_figure1.jpg'); 
-    background-size: contain; background-repeat: no-repeat; opacity: 0.6; z-index: 0; 
+    position: absolute;
+    bottom: -20px; 
+    left: -30px; 
+    width: 180px; 
+    height: 250px; 
+    background-image: url('korean_figure1.jpg'); /* 確保這裡副檔名正確 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6; 
+    z-index: 0; 
 }
 
 
-/* 2. 基礎單字區 - 淺黃色主題 (新增) */
-.unit-korean-yellow-new {
-    background-color: #fffde7; 
-}
-.unit-korean-yellow-new h2 {
-    color: #fbc02d; 
-    border-color: #fbc02d;
-}
-
-
-/* 3. 核心文法區 - 淺紅色主題 (配對遊戲) */
+/* 核心文法區 - 淺紅色主題 */
 .unit-korean-red {
     background-color: #ffebee; 
 }
@@ -133,53 +143,46 @@ canvas {
     color: #d32f2f; 
     border-color: #d32f2f;
 }
+/* 核心文法區的人物裝飾 - 保留 */
 .unit-korean-red::after {
-    /* 裝飾圖片路徑，請確保檔案存在且副檔名正確 */
     content: '';
-    position: absolute; top: -50px; right: -50px; 
-    width: 200px; height: 280px; 
-    background-image: url('korean_figure1.jpg'); 
-    background-size: contain; background-repeat: no-repeat; opacity: 0.5; z-index: 0;
+    position: absolute;
+    top: -50px; 
+    right: -50px; 
+    width: 200px; 
+    height: 280px; 
+    background-image: url('korean_figure1.jpg'); /* 確保這裡副檔名正確 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5; 
+    z-index: 0;
     transform: rotate(15deg); 
 }
 
 
-/* 4. 影片區 - 淺綠色主題 */
-.unit-korean-green { /* 使用新的 class 名稱避免衝突 */
-    background-color: #e8f5e9; 
+/* 影片區 - 淺黃色主題 */
+.unit-korean-yellow {
+    background-color: #fffde7; 
 }
-.unit-korean-green h2 {
-    color: #388e3c; 
-    border-color: #388e3c;
+.unit-korean-yellow h2 {
+    color: #fbc02d; 
+    border-color: #fbc02d;
 }
-.unit-korean-green::before {
-    /* 裝飾圖片路徑，請確保檔案存在且副檔名正確 */
+/* 影片區塊的韓國傳統圖案裝飾 - 保留 */
+.unit-korean-yellow::before {
     content: '';
-    position: absolute; bottom: 20px; right: 20px;
-    width: 150px; height: 150px;
-    background-image: url('korean_pattern.jpg'); 
-    background-size: contain; background-repeat: no-repeat; opacity: 0.4; z-index: 0;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    background-image: url('korean_pattern.jpg'); /* 確保這裡副檔名正確 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: 0;
 }
 
-/* 單字列表樣式 (新增區塊的內部樣式) */
-.word-list-container {
-    display: flex;
-    justify-content: space-around;
-    gap: 40px;
-    margin-top: 40px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-.word-group { flex: 1; min-width: 300px; }
-.word-group h3 {
-    font-size: 1.4em; color: #0077b6; border-bottom: 2px solid #a8dadc;
-    padding-bottom: 10px; margin-bottom: 15px;
-}
-.word-group ul { list-style: none; padding: 0; }
-.word-group li { font-size: 1.1em; margin-bottom: 10px; line-height: 1.5; }
-.word-group li strong { color: #d62828; font-weight: bold; }
 
 /* 影片嵌入容器樣式 */
 .video-container {
